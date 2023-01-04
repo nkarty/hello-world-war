@@ -3,19 +3,19 @@ pipeline {
     stages {
         stage('clone step') {
             steps {
-                sh 'rm -rf hello-world-war.'
+                sh 'rm -rf hello-world-war'
                 sh 'git clone https://github.com/venkibiligere/hello-world-war.git'
             }
         }
-		    stage('Build') {
+        stage('Build') {
             steps {
                 sh 'mvn package'
             }
-		       }
-		    stage('Deploy step') {
+        }
+        stage('Deploy step') {
              steps {
-                 sh 'sudo cp /var/lib/jenkins/${job_name}/hello-world-war-1.0.0.war /var/lib/tomcat9/webapps'      
-             }
+                 sh 'sudo cp /var/lib/jenkins/workspace/Multibranch_Config_develop/target/hello-world-war-1.0.0.war /var/lib/tomcat9/webapps'      
+            }
         }
     }
 }
